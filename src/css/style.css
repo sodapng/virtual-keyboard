@@ -1,0 +1,146 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard {
+  border-radius: 8px;
+  padding: 20px;
+  width: 830px;
+  height: max-content;
+  background-color: #698e6d;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.row {
+  display: flex;
+  gap: 3px;
+}
+
+.key {
+  width: 45px;
+  height: 45px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px #302c2b, 0 1px 2px lightsalmon;
+  background-color: #f5ede8;
+}
+
+.backspace {
+  width: 90px;
+}
+
+.tab,
+.backslash {
+  width: 67.5px;
+}
+
+.caps-lock,
+.shift-right {
+  width: calc(78.75px + 1.5px);
+}
+
+.enter,
+.shift-left {
+  width: calc(101.25px + 1.5px);
+}
+
+.lambda {
+  width: calc(65px);
+  background-color: lightsalmon;
+}
+
+.space {
+  width: 290px;
+  background-color: #302c2b;
+}
+
+.ctrl,
+.alt,
+.super,
+.fn {
+  width: 59px;
+}
+
+.fn {
+  margin-right: 18px;
+}
+
+.backspace,
+.tab,
+.backslash,
+.caps-lock,
+.enter,
+.shift-left,
+.shift-right,
+.ctrl,
+.alt,
+.super,
+.fn {
+  background-color: #7bb18d;
+}
+
+.esc,
+.up,
+.left,
+.down,
+.right {
+  background-color: #fdc85e;
+}
+
+.esc,
+.lambda,
+.up,
+.down,
+.left,
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.esc > span {
+  display: inline-block;
+  font-size: 25px;
+  transform-origin: center;
+  animation: 0.5s up infinite linear alternate;
+}
+
+.lambda > span {
+  animation: 0.7s heart infinite linear alternate;
+}
+
+@keyframes heart {
+  0% {
+    transform: scale(0.8);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes up {
+  to {
+    transform: rotate(-10deg);
+  }
+  from {
+    transform: rotate(30deg);
+  }
+}
