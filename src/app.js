@@ -19,8 +19,8 @@ async function runApp() {
   const { default: handleKeyUp } = await import('./helpers/handleKeyUp.js')
   const { default: locale } = await import('./helpers/locale.js')
 
-  keyboard.addEventListener('mousedown', handleMouseDown)
-  keyboard.addEventListener('click', handleClick)
+  keyboard.addEventListener('mousedown', handleMouseDown.bind(this, rows))
+  keyboard.addEventListener('click', handleClick.bind(this, rows))
   document.addEventListener('keydown', handleKeyDown.bind(this, rows))
   document.addEventListener('keyup', handleKeyUp.bind(this, rows))
 

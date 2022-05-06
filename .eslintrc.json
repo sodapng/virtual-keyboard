@@ -20,7 +20,6 @@
         "endOfLine": "auto"
       }
     ],
-    "import/extensions": "off",
-    "no-restricted-syntax": "off"
+    "import/extensions": "off"
   }
 }

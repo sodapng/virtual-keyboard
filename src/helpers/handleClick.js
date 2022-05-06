@@ -1,10 +1,23 @@
-export default function handleClick(event) {
+import changeKeyboard from './changeKeyboard.js'
+import en from '../layouts/en.js'
+import ru from '../layouts/ru.js'
+
+export default function handleClick(rows, event) {
   const key = event.target.closest('.key')
   if (!key) return
   key.classList.remove('active')
 
   if (key.id === 'caps') {
     key.classList.toggle('caps-lock--active')
+  }
+
+  const layout = localStorage.getItem('lang') === 'en' ? en : ru
+  if (/Shift/.test(key.dataset.code)) {
+    if (JSON.parse(localStorage.getItem('caps'))) {
+      changeKeyboard('caps', layout, rows)
+    } else {
+      changeKeyboard('normal', layout, rows)
+    }
   }
 
   const textarea = document.querySelector('textarea')
