@@ -2,20 +2,17 @@ import switchLang from './switchLang.js'
 import changeKeyboard from './changeKeyboard.js'
 import en from '../layouts/en.js'
 import ru from '../layouts/ru.js'
-import forEach from './forEach.js'
 
 export default function locale(rows, ...codes) {
   const pressed = new Set()
   document.addEventListener('keydown', (event) => {
     pressed.add(event.code)
 
-    forEach(codes, (i, code) => {
-      if (!pressed.has(code)) {
-        return undefined
+    for (let i = 0; i < codes.length; i += 1) {
+      if (!pressed.has(codes[i])) {
+        return
       }
-
-      return undefined
-    })
+    }
 
     pressed.clear()
     const layout = switchLang() === 'en' ? en : ru
