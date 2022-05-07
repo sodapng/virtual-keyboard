@@ -158,7 +158,7 @@ span::before {
 
 .caps-lock::after {
   content: '';
-  border: 3px solid red;
+  border: 3px solid rgb(245, 237, 232);
   border-radius: 50%;
   position: absolute;
   top: 3px;
@@ -166,5 +166,5 @@ span::before {
 }
 
 .caps-lock--active::after {
-  border-color: green;
+  border-color: #698e6d;
 }

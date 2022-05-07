@@ -5,8 +5,12 @@ import ru from '../layouts/ru.js'
 export default function handleKeyUp(rows, event) {
   if (/^F/.test(event.code)) return
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
-  const dataCode = document.querySelector(`[data-code="${event.code}"]`)
-  dataCode.classList.remove('active')
+  const key = document.querySelector(`[data-code="${event.code}"]`)
+  key.classList.remove('active')
+
+  if (/Caps/.test(event.key)) {
+    key.classList.toggle('caps-lock--active')
+  }
 
   if (event.key === 'Shift') {
     if (JSON.parse(localStorage.getItem('caps'))) {

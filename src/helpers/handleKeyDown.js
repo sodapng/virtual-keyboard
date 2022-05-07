@@ -7,19 +7,39 @@ localStorage.setItem('caps', false)
 
 export default function handleKeyDown(rows, event) {
   if (/^F/.test(event.code) || event.repeat) return
-  if (event.code === 'Tab') {
-    event.preventDefault()
-  }
 
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
   document.getElementById('root').style.setProperty('--random-deg', randomDeg())
-  document.querySelector(`[data-code="${event.code}"]`).classList.add('active')
+  const key = document.querySelector(`[data-code="${event.code}"]`)
+  key.classList.add('active')
+  const textarea = document.querySelector('textarea')
 
-  // if (!/Caps|Shift|Backspace|Del|Enter|Control|Alt|Meta/gi.test(event.code)) {
-  //   event.preventDefault()
-  //   console.log(event.code)
-  //   return
-  // }
+  if (event.code === 'Tab') {
+    event.preventDefault()
+    if (/Tab/.test(key.dataset.code)) {
+      textarea.value += '\t'
+      textarea.focus()
+      return
+    }
+  }
+
+  if (/Arrow/gi.test(event.code)) {
+    event.preventDefault()
+    const pos = textarea.selectionStart
+    const start = textarea.value.slice(0, pos)
+    const end = textarea.value.slice(pos)
+    textarea.value = `${start}${key.firstElementChild.dataset.content}${end}`
+    if (
+      ['👆', '👈', '👇', '👉'].includes(key.firstElementChild.dataset.content)
+    ) {
+      textarea.setSelectionRange(pos + 2, pos + 2)
+    } else {
+      textarea.setSelectionRange(pos + 1, pos + 1)
+    }
+
+    textarea.focus()
+    return
+  }
 
   if (event.key === 'Shift') {
     if (JSON.parse(localStorage.getItem('caps'))) {
