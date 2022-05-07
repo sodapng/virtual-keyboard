@@ -40,11 +40,14 @@ export default function handleClick(rows, event) {
   }
 
   const textarea = document.querySelector('textarea')
+  const pos = textarea.selectionStart
+  const start = textarea.value.slice(0, pos)
+  const end = textarea.value.slice(pos)
+
   if (/Escape|CapsLock|Shift|Control|Alt|Meta/.test(key.dataset.code)) {
     return
   }
 
-  const pos = textarea.selectionStart
   if (/Backspace/.test(key.dataset.code)) {
     if (pos === 0) {
       textarea.focus()
@@ -66,7 +69,8 @@ export default function handleClick(rows, event) {
   }
 
   if (/Enter/.test(key.dataset.code)) {
-    textarea.value += '\n'
+    textarea.value = `${start}\n${end}`
+    textarea.setSelectionRange(pos + 1, pos + 1)
     textarea.focus()
     return
   }
@@ -83,8 +87,6 @@ export default function handleClick(rows, event) {
     return
   }
 
-  const start = textarea.value.slice(0, pos)
-  const end = textarea.value.slice(pos)
   textarea.value = `${start}${key.firstElementChild.dataset.content}${end}`
   if (
     ['👆', '👈', '👇', '👉'].includes(key.firstElementChild.dataset.content)
