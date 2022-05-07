@@ -4,7 +4,10 @@ import ru from '../layouts/ru.js'
 
 export default function handleClick(rows, event) {
   const key = event.target.closest('.key')
-  if (!key) return
+  if (!key) {
+    document.querySelector('.active').classList.remove('active')
+    return
+  }
   key.classList.remove('active')
 
   if (key.id === 'caps') {
