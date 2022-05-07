@@ -190,6 +190,7 @@ textarea {
 
 body {
   background-color: #698e6d;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {

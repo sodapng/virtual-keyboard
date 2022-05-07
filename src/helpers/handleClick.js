@@ -5,7 +5,7 @@ import ru from '../layouts/ru.js'
 export default function handleClick(rows, event) {
   const key = event.target.closest('.key')
   if (!key) {
-    document.querySelector('.active').classList.remove('active')
+    document.querySelector('.active')?.classList.remove('active')
     return
   }
   key.classList.remove('active')
