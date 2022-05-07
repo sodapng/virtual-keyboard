@@ -1,6 +1,6 @@
 export default `
-<textarea></textarea>
 <div class="wrapper">
+<textarea autofocus></textarea>
 <div class="keyboard">
   <div class="row">
     <div class="key esc" data-code="Escape">

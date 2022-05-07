@@ -6,12 +6,15 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .keyboard {
   border-radius: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   padding: 20px;
   width: 830px;
   height: max-content;
@@ -167,4 +170,21 @@ span::before {
 
 .caps-lock--active::after {
   border-color: #698e6d;
+}
+
+textarea {
+  width: 830px;
+  height: 150px;
+  outline: none;
+  border: none;
+  resize: none;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: rgb(245, 237, 232);
+  box-shadow: 0 10px 38px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
+}
+
+body {
+  background-color: #698e6d;
 }
