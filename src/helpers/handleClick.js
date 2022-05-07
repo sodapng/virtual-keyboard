@@ -83,11 +83,16 @@ export default function handleClick(rows, event) {
     return
   }
 
-  textarea.value =
-    textarea.value.slice(0, pos) +
-    key.firstElementChild.dataset.content +
-    textarea.value.slice(pos)
+  const start = textarea.value.slice(0, pos)
+  const end = textarea.value.slice(pos)
+  textarea.value = `${start}${key.firstElementChild.dataset.content}${end}`
+  if (
+    ['👆', '👈', '👇', '👉'].includes(key.firstElementChild.dataset.content)
+  ) {
+    textarea.setSelectionRange(pos + 2, pos + 2)
+  } else {
+    textarea.setSelectionRange(pos + 1, pos + 1)
+  }
 
-  textarea.setSelectionRange(pos + 1, pos + 1)
   textarea.focus()
 }

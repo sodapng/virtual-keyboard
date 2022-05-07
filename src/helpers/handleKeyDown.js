@@ -14,6 +14,13 @@ export default function handleKeyDown(rows, event) {
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
   document.getElementById('root').style.setProperty('--random-deg', randomDeg())
   document.querySelector(`[data-code="${event.code}"]`).classList.add('active')
+
+  // if (!/Caps|Shift|Backspace|Del|Enter|Control|Alt|Meta/gi.test(event.code)) {
+  //   event.preventDefault()
+  //   console.log(event.code)
+  //   return
+  // }
+
   if (event.key === 'Shift') {
     if (JSON.parse(localStorage.getItem('caps'))) {
       changeKeyboard('capsOnShift', layout, rows)
