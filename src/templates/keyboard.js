@@ -1,5 +1,6 @@
 export default `
 <div class="wrapper">
+<div class="locale">switch language: alt + shift</div>
 <textarea autofocus></textarea>
 <div class="keyboard">
   <div class="row">
@@ -94,5 +95,6 @@ export default `
     </div>
   </div>
 </div>
+<p>Powered by <a target="_blank" href="https://dribbble.com/shots/11368509-Keyboard-Design">Delacro</a></p>
 </div>
 `
