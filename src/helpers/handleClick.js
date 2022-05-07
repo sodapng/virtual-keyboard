@@ -12,21 +12,44 @@ export default function handleClick(rows, event) {
   }
 
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
+
   if (/Shift/.test(key.dataset.code)) {
     if (JSON.parse(localStorage.getItem('caps'))) {
       changeKeyboard('caps', layout, rows)
     } else {
       changeKeyboard('normal', layout, rows)
     }
+
+    return
+  }
+
+  if (key.classList.contains('lang')) {
+    const lang = key.firstElementChild.dataset.content
+    const isCaps = JSON.parse(localStorage.getItem('caps'))
+    const mode = isCaps ? 'caps' : 'normal'
+
+    if (lang === 'ru') {
+      localStorage.setItem('lang', 'en')
+      changeKeyboard(mode, en, rows)
+    } else {
+      localStorage.setItem('lang', 'ru')
+      changeKeyboard(mode, ru, rows)
+    }
+
+    return
   }
 
   const textarea = document.querySelector('textarea')
-  if (/Escape|Delete|CapsLock|Shift|Control|Alt|Meta/.test(key.dataset.code)) {
+  if (/Escape|CapsLock|Shift|Control|Alt|Meta/.test(key.dataset.code)) {
     return
   }
 
   const pos = textarea.selectionStart
   if (/Backspace/.test(key.dataset.code)) {
+    if (pos === 0) {
+      textarea.focus()
+      return
+    }
     textarea.value =
       textarea.value.slice(0, pos - 1) + textarea.value.slice(pos)
     textarea.setSelectionRange(pos - 1, pos - 1)
@@ -34,18 +57,29 @@ export default function handleClick(rows, event) {
     return
   }
 
+  if (/Delete/.test(key.dataset.code)) {
+    textarea.value =
+      textarea.value.slice(0, pos) + textarea.value.slice(pos + 1)
+    textarea.setSelectionRange(pos, pos)
+    textarea.focus()
+    return
+  }
+
   if (/Enter/.test(key.dataset.code)) {
     textarea.value += '\n'
+    textarea.focus()
     return
   }
 
   if (/Space/.test(key.dataset.code)) {
     textarea.value += ' '
+    textarea.focus()
     return
   }
 
   if (/Tab/.test(key.dataset.code)) {
     textarea.value += '\t'
+    textarea.focus()
     return
   }
 
