@@ -76,13 +76,15 @@ export default function handleClick(rows, event) {
   }
 
   if (/Space/.test(key.dataset.code)) {
-    textarea.value += ' '
+    textarea.value = `${start} ${end}`
+    textarea.setSelectionRange(pos + 1, pos + 1)
     textarea.focus()
     return
   }
 
   if (/Tab/.test(key.dataset.code)) {
-    textarea.value += '\t'
+    textarea.value = `${start}\t${end}`
+    textarea.setSelectionRange(pos + 1, pos + 1)
     textarea.focus()
     return
   }

@@ -8,7 +8,7 @@ export default {
     'ctrl alt super {space} super alt 👈 👇 👉',
   ],
   shift: [
-    '🤪 ! @ # $ % ^ & * ( ) _ + bksp `',
+    '🤪 ! @ # $ % ^ & * ( ) _ + bksp ~',
     'tab Q W E R T Y U I O P { } | del',
     'caps A S D F G H J K L : " enter en',
     'shift Z X C V B N M < > ? shift 👆 ❤️',
@@ -22,7 +22,7 @@ export default {
     'ctrl alt super {space} super alt 👈 👇 👉',
   ],
   capsOnShift: [
-    '🤪 ! @ # $ % ^ & * ( ) _ + bksp `',
+    '🤪 ! @ # $ % ^ & * ( ) _ + bksp ~',
     'tab q w e r t y u i o p { } | del',
     'caps a s d f g h j k l : " enter en',
     'shift z x c v b n m < > ? shift 👆 ❤️',

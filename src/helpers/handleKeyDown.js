@@ -13,21 +13,34 @@ export default function handleKeyDown(rows, event) {
   const key = document.querySelector(`[data-code="${event.code}"]`)
   key.classList.add('active')
   const textarea = document.querySelector('textarea')
+  const pos = textarea.selectionStart
+  const start = textarea.value.slice(0, pos)
+  const end = textarea.value.slice(pos)
+
+  if (event.ctrlKey) {
+    return
+  }
+
+  if (
+    /Key|Digit|Slash|Comma|Period|Bracket|Semicolon|Quote/gi.test(event.code)
+  ) {
+    event.preventDefault()
+    textarea.value = `${start}${key.firstElementChild.dataset.content}${end}`
+    textarea.setSelectionRange(pos + 1, pos + 1)
+    textarea.focus()
+    return
+  }
 
   if (event.code === 'Tab') {
     event.preventDefault()
-    if (/Tab/.test(key.dataset.code)) {
-      textarea.value += '\t'
-      textarea.focus()
-      return
-    }
+    textarea.value = `${start}\t${end}`
+    textarea.setSelectionRange(pos + 1, pos + 1)
+    textarea.focus()
+    return
   }
 
   if (/Arrow/gi.test(event.code)) {
     event.preventDefault()
-    const pos = textarea.selectionStart
-    const start = textarea.value.slice(0, pos)
-    const end = textarea.value.slice(pos)
     textarea.value = `${start}${key.firstElementChild.dataset.content}${end}`
     if (
       ['👆', '👈', '👇', '👉'].includes(key.firstElementChild.dataset.content)
