@@ -1,18 +1,21 @@
-import changeKeyboard from './changeKeyboard.js'
+import changeKeyboard from '../helpers/changeKeyboard.js'
 import en from '../layouts/en.js'
 import ru from '../layouts/ru.js'
 
 export default function handleKeyUp(rows, event) {
-  if (/^F/.test(event.code)) return
+  const { code } = event
+
+  if (/^F|Context|Scroll|Pause|Insert|Page|Home|End|Num/.test(code)) return
+
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
-  const key = document.querySelector(`[data-code="${event.code}"]`)
+  const key = document.querySelector(`[data-code="${code}"]`)
   key.classList.remove('active')
 
-  if (/Caps/.test(event.key)) {
+  if (/Caps/.test(code)) {
     key.classList.toggle('caps-lock--active')
   }
 
-  if (event.key === 'Shift') {
+  if (/Shift/.test(code)) {
     if (JSON.parse(localStorage.getItem('caps'))) {
       changeKeyboard('caps', layout, rows)
     } else {

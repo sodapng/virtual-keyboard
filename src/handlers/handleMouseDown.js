@@ -1,25 +1,32 @@
-import changeKeyboard from './changeKeyboard.js'
+import changeKeyboard from '../helpers/changeKeyboard.js'
 import en from '../layouts/en.js'
 import ru from '../layouts/ru.js'
-import randomDeg from './randomDeg.js'
+import randomDeg from '../helpers/randomDeg.js'
+import setPropertyForStyle from '../helpers/setPropertyForStyle.js'
 
 export default function handleMouseDown(rows, event) {
   const key = event.target.closest('.key')
+
   if (!key) return
-  document.getElementById('root').style.setProperty('--random-deg', randomDeg())
+
+  setPropertyForStyle('--random-deg', randomDeg)
   key.classList.add('active')
 
   const layout = localStorage.getItem('lang') === 'en' ? en : ru
+  const isCaps = JSON.parse(localStorage.getItem('caps'))
+  const { code } = key.dataset
 
-  if (/Shift/.test(key.dataset.code)) {
-    if (JSON.parse(localStorage.getItem('caps'))) {
+  if (/Shift/.test(code)) {
+    if (isCaps) {
       changeKeyboard('capsOnShift', layout, rows)
     } else {
       changeKeyboard('shift', layout, rows)
     }
-  } else if (/CapsLock/.test(key.dataset.code)) {
-    localStorage.setItem('caps', !JSON.parse(localStorage.getItem('caps')))
-    if (JSON.parse(localStorage.getItem('caps'))) {
+  }
+
+  if (/CapsLock/.test(code)) {
+    localStorage.setItem('caps', !isCaps)
+    if (!isCaps) {
       changeKeyboard('caps', layout, rows)
     } else {
       changeKeyboard('normal', layout, rows)
