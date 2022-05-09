@@ -4,7 +4,7 @@ import ru from '../layouts/ru.js'
 import randomDeg from '../helpers/randomDeg.js'
 import setPropertyForStyle from '../helpers/setPropertyForStyle.js'
 
-export default function handleKeyDown(rows, event) {
+export default function handleKeyDown(rows, textarea, event) {
   const { code } = event
   if (
     /^F|Context|Scroll|Pause|Insert|Page|Home|End|Num/.test(code) ||
@@ -48,7 +48,6 @@ export default function handleKeyDown(rows, event) {
     return
   }
 
-  const textarea = document.querySelector('textarea')
   let positionOfCursor = textarea.selectionStart
   const selectedStartValue = textarea.value.slice(0, positionOfCursor)
   const selectedEndValue = textarea.value.slice(positionOfCursor)

@@ -2,7 +2,7 @@ import changeKeyboard from '../helpers/changeKeyboard.js'
 import en from '../layouts/en.js'
 import ru from '../layouts/ru.js'
 
-export default function handleClick(rows, event) {
+export default function handleClick(rows, textarea, event) {
   const key = event.target.closest('.key')
 
   if (!key) {
@@ -50,7 +50,6 @@ export default function handleClick(rows, event) {
     return
   }
 
-  const textarea = document.querySelector('textarea')
   let positionOfCursor = textarea.selectionStart
   let selectedStartValue = textarea.value.slice(0, positionOfCursor)
   let selectedEndValue = textarea.value.slice(positionOfCursor)

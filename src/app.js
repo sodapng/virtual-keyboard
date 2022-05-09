@@ -15,14 +15,15 @@ async function runApp() {
 
   const rows = document.querySelectorAll('.row')
   const keyboard = document.querySelector('.keyboard')
+  const textarea = document.querySelector('textarea')
 
   const { default: handleKeyDown } = await import('./handlers/handleKeyDown.js')
   const { default: handleKeyUp } = await import('./handlers/handleKeyUp.js')
   const { default: locale } = await import('./helpers/locale.js')
 
   keyboard.addEventListener('mousedown', handleMouseDown.bind(this, rows))
-  keyboard.addEventListener('click', handleClick.bind(this, rows))
-  document.addEventListener('keydown', handleKeyDown.bind(this, rows))
+  keyboard.addEventListener('click', handleClick.bind(this, rows, textarea))
+  document.addEventListener('keydown', handleKeyDown.bind(this, rows, textarea))
   document.addEventListener('keyup', handleKeyUp.bind(this, rows))
 
   changeKeyboard('normal', layout, rows)
