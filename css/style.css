@@ -1,0 +1,246 @@
+:root {
+  --random-deg: 0deg;
+}
+
+body {
+  font-family: 'Fredoka One', cursive;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard {
+  border-radius: 8px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 20px;
+  width: 830px;
+  height: max-content;
+  background-color: #698e6d;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.row {
+  display: flex;
+  gap: 3px;
+}
+
+.key {
+  width: 45px;
+  height: 45px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px #302c2b, 0 1px 2px lightsalmon;
+  background-color: #f5ede8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #525b67;
+  transition: all 0.1s;
+}
+
+.backspace {
+  width: 90px;
+}
+
+.tab,
+.backslash {
+  width: 67.5px;
+}
+
+.caps-lock,
+.shift-right {
+  width: calc(78.75px + 1.5px);
+}
+
+.enter,
+.shift-left {
+  width: calc(101.25px + 1.5px);
+}
+
+.lambda {
+  width: 65px;
+  background-color: lightsalmon;
+}
+
+.space {
+  width: 287px;
+  background-color: #302c2b;
+  animation: disco 0.5s ease-in infinite;
+}
+
+@keyframes disco {
+  0% {
+    color: #fdc85e;
+  }
+  25% {
+    filter: hue-rotate(25deg);
+    color: aqua;
+  }
+  50% {
+    filter: hue-rotate(50deg);
+    color: rebeccapurple;
+  }
+  75% {
+    filter: hue-rotate(75deg);
+    color: violet;
+  }
+  100% {
+    filter: hue-rotate(100deg);
+    color: salmon;
+  }
+}
+
+.ctrl-left,
+.alt-left,
+.super,
+.alt-right {
+  width: 59px;
+}
+
+.alt-right {
+  margin-right: 21px;
+}
+
+.lang,
+.backquote,
+.delete,
+.backspace,
+.tab,
+.caps-lock,
+.enter,
+.shift-left,
+.shift-right,
+.ctrl-left,
+.alt-left,
+.super,
+.alt-right {
+  background-color: #7bb18d;
+}
+
+.esc,
+.up,
+.left,
+.down,
+.right {
+  background-color: #fdc85e;
+}
+
+.esc > span {
+  display: inline-block;
+  font-size: 25px;
+  transform-origin: center;
+  animation: 0.5s up infinite linear alternate;
+}
+
+.lambda > span {
+  animation: 0.7s heart infinite linear alternate;
+}
+
+@keyframes heart {
+  0% {
+    transform: scale(0.8);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes up {
+  to {
+    transform: rotate(-10deg);
+  }
+  from {
+    transform: rotate(30deg);
+  }
+}
+
+span::before {
+  content: attr(data-content);
+}
+
+.active {
+  filter: hue-rotate(var(--random-deg)) opacity(0.8);
+  transform: rotate(1deg) scale(0.9);
+}
+
+.caps-lock {
+  position: relative;
+}
+
+.caps-lock::after {
+  content: '';
+  border: 3px solid rgb(245, 237, 232);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.caps-lock--active::after {
+  border-color: #698e6d;
+}
+
+textarea {
+  width: 830px;
+  height: 150px;
+  outline: none;
+  border: none;
+  resize: none;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: rgb(245, 237, 232);
+  box-shadow: 0 10px 38px rgb(0 0 0 / 30%), 0 15px 12px rgb(0 0 0 / 22%);
+  caret-color: #698e6d;
+  padding: 10px;
+  padding-bottom: 0;
+}
+
+body {
+  background-color: #698e6d;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.locale {
+  font-family: 'Fredoka One', cursive;
+  transform: translateY(-100%);
+  text-align: center;
+  color: #7bb18d;
+  font-size: 40px;
+  text-shadow: 3px 1px 0px lightsalmon;
+  filter: drop-shadow(-1px -2px 0px #fdc85e);
+}
+
+p,
+a {
+  color: #525b67;
+}
+
+.key:hover {
+  cursor: pointer;
+}
