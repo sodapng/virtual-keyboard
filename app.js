@@ -28,6 +28,7 @@ async function runApp() {
 
   changeKeyboard('normal', layout, rows)
   locale(rows, 'AltLeft', 'ShiftLeft')
+  alert('Привет, Брат!\nОтпишись в discrod, если заметишь ошибку!\n Discrod: @Нюкта#3603')
 }
 
 runApp()
