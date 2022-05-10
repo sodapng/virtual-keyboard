@@ -28,7 +28,7 @@ async function runApp() {
 
   changeKeyboard('normal', layout, rows)
   locale(rows, 'AltLeft', 'ShiftLeft')
-  textarea.placeholder = 'Привет, Брат!\nОтпишись в discrod, если заметишь ошибку!\nDiscrod: @Нюкта#3603'
+  textarea.placeholder = 'Привет, Брат!\nОтпишись, пожалуйста, в дискорде, если заметишь ошибку!\nDiscrod: @Нюкта#3603'
 }
 
 runApp()
