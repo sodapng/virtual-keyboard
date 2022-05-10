@@ -18,7 +18,7 @@ export default function handleKeyDown(rows, textarea, event) {
   const key = document.querySelector(`[data-code="${code}"]`)
   key.classList.add('active')
 
-  if (event.ctrlKey || /Backspace|Delete|Esc|Meta|Space|Enter/i.test(code)) {
+  if (event.ctrlKey || /Backspace|Delete|Esc|Meta|Space|Enter|Equal|Minus/i.test(code)) {
     return
   }
 
